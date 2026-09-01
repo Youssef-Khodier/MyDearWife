@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #09070D;
+  --color-surface-primary: #12101A;
+  --color-surface-secondary: #1A1723;
+  --color-surface-elevated: #24202F;
+  --color-text-primary: #FFF8F3;
+  --color-text-secondary: #CFC6D0;
+  --color-text-muted: #8F8793;
+  --color-rose: #EFA6B8;
+  --color-pink-soft: #F6C6D5;
+  --color-champagne: #E8C98A;
+  --color-lavender: #B9A7D8;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09070D;
+}
+::-webkit-scrollbar-thumb {
+  background: #24202F;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EFA6B8;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-elevated {
+  background: rgba(36, 32, 47, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Gradients */
+.gradient-cosmic {
+  background: radial-gradient(circle at 50% 20%, #24182C 0%, #161124 50%, #09070D 100%);
+}
+
+.gradient-romantic {
+  background: radial-gradient(circle at 50% 30%, #3B1D30 0%, #2A1421 50%, #160C14 100%);
+}
+
+.gradient-golden {
+  background: radial-gradient(circle at 50% 40%, #3A2814 0%, #241B10 60%, #09070D 100%);
+}
+
+/* Film Grain Overlay */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Typewriter cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: #EFA6B8;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: cursorBlink 0.9s infinite;
+}
+
+/* Candle flame styling */
+.candle-wick {
+  width: 3px;
+  height: 10px;
+  background: #332B30;
+  border-radius: 2px 2px 0 0;
+  margin: 0 auto;
+}
+
+.candle-flame {
+  width: 16px;
+  height: 32px;
+  background: radial-gradient(ellipse at 50% 85%, #FFFDF5 0%, #FFE680 40%, #FF8C38 75%, transparent 100%);
+  border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+  filter: drop-shadow(0 0 12px rgba(255, 180, 50, 0.95)) drop-shadow(0 0 28px rgba(255, 130, 40, 0.6));
+  animation: candleFlicker 1.4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Smoke puff after blow */
+@keyframes smokeRise {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(2.4) rotate(25deg);
+  }
+}
+
+.smoke-puff {
+  animation: smokeRise 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
