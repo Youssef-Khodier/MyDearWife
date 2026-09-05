@@ -1,8 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Maximize2, LayoutGrid, Image as ImageIcon } from 'lucide-react';
-import { TimelineImage } from '../../types';
-import { resolveAsset } from '../../lib/assets';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  LayoutGrid,
+  Image as ImageIcon,
+} from "lucide-react";
+import { TimelineImage } from "../../types";
 
 interface MemoryPhotoProps {
   images: TimelineImage[];
@@ -16,14 +21,14 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
   onPhotoClick,
 }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [viewMode, setViewMode] = useState<'single' | 'collage'>('collage');
+  const [viewMode, setViewMode] = useState<"single" | "collage">("collage");
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   const activeThumbnailRef = useRef<HTMLButtonElement>(null);
 
   // Reset state when images change (year change) - default to collage if multiple images exist
   useEffect(() => {
     setSelectedImageIndex(0);
-    setViewMode(images.length > 1 ? 'collage' : 'single');
+    setViewMode(images.length > 1 ? "collage" : "single");
   }, [images]);
 
   // Auto scroll active thumbnail into view
@@ -37,7 +42,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
 
       container.scrollTo({
         left: thumbLeft - containerWidth / 2 + thumbWidth / 2,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   }, [selectedImageIndex]);
@@ -62,11 +67,11 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
       {images.length > 1 && (
         <div className="flex items-center gap-1.5 mb-3 p-1 rounded-full bg-white/90 border border-[#F8BBD0] shadow-sm z-20">
           <button
-            onClick={() => setViewMode('collage')}
+            onClick={() => setViewMode("collage")}
             className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans font-bold tracking-wider transition-all duration-200 focus:outline-none cursor-pointer ${
-              viewMode === 'collage'
-                ? 'bg-[#D81B60] text-white shadow-sm'
-                : 'text-[#5C354E] hover:text-[#D81B60]'
+              viewMode === "collage"
+                ? "bg-[#D81B60] text-white shadow-sm"
+                : "text-[#5C354E] hover:text-[#D81B60]"
             }`}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
@@ -74,11 +79,11 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
           </button>
 
           <button
-            onClick={() => setViewMode('single')}
+            onClick={() => setViewMode("single")}
             className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans font-bold tracking-wider transition-all duration-200 focus:outline-none cursor-pointer ${
-              viewMode === 'single'
-                ? 'bg-[#D81B60] text-white shadow-sm'
-                : 'text-[#5C354E] hover:text-[#D81B60]'
+              viewMode === "single"
+                ? "bg-[#D81B60] text-white shadow-sm"
+                : "text-[#5C354E] hover:text-[#D81B60]"
             }`}
           >
             <ImageIcon className="w-3.5 h-3.5" />
@@ -88,25 +93,25 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
       )}
 
       {/* SINGLE POLAROID VIEW */}
-      {viewMode === 'single' ? (
+      {viewMode === "single" ? (
         <>
-          <div className="relative max-w-[440px] sm:max-w-[460px] w-full">
+          <div className="relative max-w-[380px] sm:max-w-[430px] w-full">
             {/* Cute Washi Tape Decor */}
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-28 h-5 bg-[#FF80AB]/80 backdrop-blur-sm rounded-sm -rotate-1 border-l-2 border-r-2 border-[#D81B60]/30 shadow-sm z-20" />
 
             <motion.div
               whileHover={{ y: -3, scale: 1.01 }}
               transition={{ duration: 0.25 }}
-              className="relative bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_12px_35px_rgba(216,27,96,0.14)] border border-[#F8BBD0]"
+              className="relative bg-white rounded-2xl p-3 sm:p-4 shadow-[0_12px_35px_rgba(216,27,96,0.14)] border border-[#F8BBD0]"
             >
               {/* Main Photo Area - Portrait proportioned with blurred fill so NO cropping occurs! */}
               <div
                 onClick={() => onPhotoClick(selectedImageIndex)}
-                className="relative w-full aspect-[3/4] max-h-[480px] sm:max-h-[520px] rounded-xl overflow-hidden bg-[#FFEAF2] cursor-pointer group select-none flex items-center justify-center"
+                className="relative w-full aspect-[3/4] max-h-[440px] sm:max-h-[480px] rounded-xl overflow-hidden bg-[#FFEAF2] cursor-pointer group select-none flex items-center justify-center"
               >
                 {/* Layer 1: Ambient soft blur fill of the image to gracefully fill any border */}
                 <img
-                  src={resolveAsset(currentImage.src)}
+                  src={currentImage.src}
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-full h-full object-cover filter blur-xl scale-125 opacity-40 select-none pointer-events-none"
@@ -116,7 +121,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImage.src}
-                    src={resolveAsset(currentImage.src)}
+                    src={currentImage.src}
                     alt={currentImage.alt}
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -189,15 +194,15 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                     key={idx}
                     ref={isSelected ? activeThumbnailRef : null}
                     onClick={() => setSelectedImageIndex(idx)}
-                    className={`relative shrink-0 w-12 h-15 sm:w-14 sm:h-17 rounded-xl overflow-hidden border-2 transition-all duration-200 focus:outline-none cursor-pointer bg-[#FFEAF2] ${
+                    className={`relative shrink-0 w-11 h-13 sm:w-12 sm:h-15 rounded-xl overflow-hidden border-2 transition-all duration-200 focus:outline-none cursor-pointer bg-[#FFEAF2] ${
                       isSelected
-                        ? 'border-[#D81B60] shadow-[0_4px_12px_rgba(216,27,96,0.35)] scale-105'
-                        : 'border-white/90 opacity-65 hover:opacity-100 hover:scale-102'
+                        ? "border-[#D81B60] shadow-[0_4px_12px_rgba(216,27,96,0.35)] scale-105"
+                        : "border-white/90 opacity-65 hover:opacity-100 hover:scale-102"
                     }`}
                     title={img.caption || `Photo ${idx + 1}`}
                   >
                     <img
-                      src={resolveAsset(img.src)}
+                      src={img.src}
                       alt={img.alt}
                       className="w-full h-full object-cover"
                     />
@@ -216,11 +221,11 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-[460px] sm:max-w-[500px]"
+          className="w-full max-w-[440px] sm:max-w-[480px]"
         >
           <div
             className={`grid gap-2.5 sm:gap-3 py-1 ${
-              images.length > 4 ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-2'
+              images.length > 4 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-2"
             }`}
           >
             {images.map((img, idx) => (
@@ -233,7 +238,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                 className="relative cursor-pointer rounded-2xl overflow-hidden aspect-[3/4] bg-[#FFEAF2] border border-[#F8BBD0]/80 shadow-[0_4px_16px_rgba(216,27,96,0.1)] group"
               >
                 <img
-                  src={resolveAsset(img.src)}
+                  src={img.src}
                   alt={img.alt || `Photo ${idx + 1}`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"

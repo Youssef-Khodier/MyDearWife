@@ -1,10 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Heart } from 'lucide-react';
-import { birthdayData } from '../../data/timelineData';
-import { soundEngine } from '../../lib/soundEngine';
-import { SparkleIcon, StarIcon } from '../../components/ui/DecorativeShapes';
-import { resolveAsset } from '../../lib/assets';
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Heart } from "lucide-react";
+import { birthdayData } from "../../data/timelineData";
+import { soundEngine } from "../../lib/soundEngine";
+import { SparkleIcon, StarIcon } from "../../components/ui/DecorativeShapes";
 
 interface IntroSectionProps {
   onStart: () => void;
@@ -35,7 +34,8 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
         >
           <SparkleIcon className="w-4 h-4 text-[#D81B60]" />
           <span className="text-xs font-sans tracking-widest uppercase text-[#1A0D18] font-bold">
-            For {birthdayData.recipient.name} • {birthdayData.recipient.nickname}
+            For {birthdayData.recipient.name} •{" "}
+            {birthdayData.recipient.nickname}
           </span>
           <StarIcon className="w-4 h-4 text-[#D81B60]" />
         </motion.div>
@@ -58,9 +58,9 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.45, duration: 0.7 }}
-            className="font-sans text-[#381E30] text-base sm:text-lg font-medium max-w-lg mx-auto leading-relaxed"
+            className="font-sans text-[#381E30] text-sm sm:text-lg font-medium max-w-lg mx-auto leading-relaxed"
           >
-           مع بعض لحد ما اخر لحظة في عمري
+            مع بعض لحد ما اخر لحظة في عمري
           </motion.p>
         </div>
 
@@ -71,24 +71,24 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
           transition={{ delay: 0.55, duration: 0.7 }}
           className="relative py-2 flex items-center justify-center"
         >
-          <div className="relative bg-white p-3.5 pb-9 rounded-2xl shadow-[0_12px_35px_rgba(216,27,96,0.15)] border border-[#F8BBD0] -rotate-2 hover:rotate-0 transition-transform duration-300">
-            <div className="w-56 sm:w-60 aspect-[3/4] rounded-xl overflow-hidden bg-[#FFEAF2] relative flex items-center justify-center">
+          <div className="relative bg-white p-3 pb-8 rounded-2xl shadow-[0_12px_35px_rgba(216,27,96,0.15)] border border-[#F8BBD0] -rotate-2 hover:rotate-0 transition-transform duration-300">
+            <div className="w-48 sm:w-56 aspect-[3/4] rounded-xl overflow-hidden bg-[#FFEAF2] relative flex items-center justify-center">
               {/* Soft blur backdrop */}
               <img
-                src={resolveAsset('/images/2026 (now)/image (1).jpg')}
+                src="/images/2026 (now)/image (1).jpg"
                 alt=""
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-35"
               />
               {/* Crisp complete uncropped photo */}
               <img
-                src={resolveAsset('/images/2026 (now)/image (1).jpg')}
+                src="/images/2026 (now)/image (1).jpg"
                 alt="Maryam Birthday Celebration"
                 className="relative z-10 w-full h-full object-contain"
                 loading="eager"
               />
               <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-2 left-2 right-2 z-30 text-white text-xs font-sans font-medium text-center drop-shadow-sm">
+              <div className="absolute bottom-2 left-2 right-2 z-30 text-white text-[11px] font-sans font-medium text-center drop-shadow-sm">
                 Happy Birthday, Maryam ✨
               </div>
             </div>
@@ -105,7 +105,7 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
         >
           <button
             onClick={handleBegin}
-            className="group relative inline-flex items-center gap-3 px-10 py-4.5 rounded-full bg-[#D81B60] hover:bg-[#B80058] text-white font-sans font-bold text-sm sm:text-sm tracking-widest uppercase transition-all duration-300 shadow-[0_8px_28px_rgba(216,27,96,0.38)] hover:scale-105 active:scale-95 focus:outline-none"
+            className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#D81B60] hover:bg-[#B80058] text-white font-sans font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 shadow-[0_8px_28px_rgba(216,27,96,0.38)] hover:scale-105 active:scale-95 focus:outline-none"
           >
             <span>Open Our Storybook</span>
             <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />

@@ -1,9 +1,8 @@
-import React, { useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { TimelineImage } from '../../types';
-import { resolveAsset } from '../../lib/assets';
+import React, { useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { TimelineImage } from "../../types";
 
 interface PhotoViewerProps {
   image: TimelineImage | null;
@@ -28,32 +27,40 @@ export const PhotoViewer: React.FC<PhotoViewerProps> = ({
 }) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft' && hasPrev && onPrev) onPrev();
-      if (e.key === 'ArrowRight' && hasNext && onNext) onNext();
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft" && hasPrev && onPrev) onPrev();
+      if (e.key === "ArrowRight" && hasNext && onNext) onNext();
     },
-    [onClose, onPrev, onNext, hasPrev, hasNext]
+    [onClose, onPrev, onNext, hasPrev, hasNext],
   );
 
   useEffect(() => {
     if (image) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
     }
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
   }, [image, handleKeyDown]);
 
-  if (typeof document === 'undefined') return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <AnimatePresence>
       {image && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-8 bg-[#1A0D18]/85 backdrop-blur-md"
-          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, width: '100vw', height: '100vh' }}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: "100vw",
+            height: "100vh",
+          }}
         >
           {/* Backdrop Dismiss */}
           <motion.div
@@ -111,7 +118,7 @@ export const PhotoViewer: React.FC<PhotoViewerProps> = ({
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-2 border-2 border-[#F48FB1]/40 max-h-[75vh] flex items-center justify-center">
               <img
-                src={resolveAsset(image.src)}
+                src={image.src}
                 alt={image.alt}
                 className="w-auto h-auto max-w-full max-h-[70vh] rounded-xl object-contain select-none"
               />
@@ -139,6 +146,6 @@ export const PhotoViewer: React.FC<PhotoViewerProps> = ({
         </div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };

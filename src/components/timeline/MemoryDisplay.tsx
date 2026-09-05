@@ -1,15 +1,27 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, ArrowRight, ArrowLeft, Heart, Feather, Sparkles } from 'lucide-react';
-import { TimelineMemory, TimelineImage } from '../../types';
-import { MemoryPhoto } from './MemoryPhoto';
-import { SparkleIcon, StarIcon } from '../ui/DecorativeShapes';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Calendar,
+  MapPin,
+  ArrowRight,
+  ArrowLeft,
+  Heart,
+  Feather,
+  Sparkles,
+} from "lucide-react";
+import { TimelineMemory, TimelineImage } from "../../types";
+import { MemoryPhoto } from "./MemoryPhoto";
+import { SparkleIcon, StarIcon } from "../ui/DecorativeShapes";
 
 interface MemoryDisplayProps {
   memory: TimelineMemory;
   index: number;
   totalCount: number;
-  onPhotoClick: (image: TimelineImage, imageIndex: number, images: TimelineImage[]) => void;
+  onPhotoClick: (
+    image: TimelineImage,
+    imageIndex: number,
+    images: TimelineImage[],
+  ) => void;
   onNext: () => void;
   onPrev: () => void;
   canPrev: boolean;
@@ -26,7 +38,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
   canPrev,
   isLast,
 }) => {
-  const isMilestone = memory.type === 'milestone';
+  const isMilestone = memory.type === "milestone";
   const hasSubSections = memory.subSections && memory.subSections.length > 0;
   const hasPhotos = memory.images && memory.images.length > 0;
 
@@ -89,7 +101,11 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                           images={subSec.images}
                           caption={subSec.caption}
                           onPhotoClick={(imgIdx) =>
-                            onPhotoClick(subSec.images[imgIdx], imgIdx, subSec.images)
+                            onPhotoClick(
+                              subSec.images[imgIdx],
+                              imgIdx,
+                              subSec.images,
+                            )
                           }
                         />
                       </div>
@@ -114,7 +130,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
 
                         <p
                           dir="auto"
-                          className="font-sans text-[#381E30] text-base sm:text-base leading-relaxed font-medium max-w-lg"
+                          className="font-sans text-[#381E30] text-sm sm:text-base leading-relaxed font-medium max-w-lg"
                         >
                           {subSec.description}
                         </p>
@@ -123,7 +139,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                           <div className="border-l-2 border-[#D81B60]/50 pl-3 py-1 max-w-lg text-left">
                             <p
                               dir="ltr"
-                              className="font-display italic text-lg sm:text-xl text-[#D81B60] font-medium leading-relaxed"
+                              className="font-display italic text-base sm:text-lg text-[#D81B60] font-medium leading-relaxed"
                             >
                               "{subSec.quote}"
                             </p>
@@ -148,7 +164,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                 {canPrev && (
                   <button
                     onClick={onPrev}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#D81B60] hover:bg-[#FFEAF2] text-[#D81B60] font-sans font-bold text-xs sm:text-xs tracking-wider uppercase transition-all duration-200 shadow-sm active:scale-95 focus:outline-none cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#D81B60] hover:bg-[#FFEAF2] text-[#D81B60] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-200 shadow-sm active:scale-95 focus:outline-none cursor-pointer"
                   >
                     <ArrowLeft className="w-3.5 h-3.5 text-[#D81B60]" />
                     <span>Previous</span>
@@ -157,9 +173,9 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
 
                 <button
                   onClick={onNext}
-                  className="inline-flex items-center gap-2 px-8 sm:px-9 py-3.5 rounded-full font-sans font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 bg-[#D81B60] hover:bg-[#B80058] text-white shadow-[0_6px_20px_rgba(216,27,96,0.3)] hover:scale-105 active:scale-95 focus:outline-none cursor-pointer"
+                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-sans font-bold text-xs tracking-widest uppercase transition-all duration-300 bg-[#D81B60] hover:bg-[#B80058] text-white shadow-[0_6px_20px_rgba(216,27,96,0.3)] hover:scale-105 active:scale-95 focus:outline-none cursor-pointer"
                 >
-                  <span>{isLast ? "The Love Letter 💌" : 'Next Memory'}</span>
+                  <span>{isLast ? "The Love Letter 💌" : "Next Memory"}</span>
                   {isLast ? (
                     <SparkleIcon className="w-3.5 h-3.5 text-white" />
                   ) : (
@@ -226,7 +242,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                 {/* Story Title */}
                 <h2
                   dir="auto"
-                  className="font-display text-3xl sm:text-4xl text-[#1A0D18] font-bold leading-tight"
+                  className="font-display text-2xl sm:text-4xl text-[#1A0D18] font-bold leading-tight"
                 >
                   {memory.title}
                 </h2>
@@ -234,7 +250,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                 {/* Story Arabic Description */}
                 <p
                   dir="auto"
-                  className="font-sans text-[#381E30] text-base sm:text-base leading-relaxed font-medium max-w-lg"
+                  className="font-sans text-[#381E30] text-sm sm:text-base leading-relaxed font-medium max-w-lg"
                 >
                   {memory.description}
                 </p>
@@ -244,7 +260,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                   <div className="border-l-2 border-[#D81B60]/50 pl-3 py-1 max-w-lg text-left">
                     <p
                       dir="ltr"
-                      className="font-display italic text-lg sm:text-xl text-[#D81B60] font-medium leading-relaxed"
+                      className="font-display italic text-base sm:text-lg text-[#D81B60] font-medium leading-relaxed"
                     >
                       "{memory.quote}"
                     </p>
@@ -264,7 +280,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                   {canPrev && (
                     <button
                       onClick={onPrev}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#D81B60] hover:bg-[#FFEAF2] text-[#D81B60] font-sans font-bold text-xs sm:text-xs tracking-wider uppercase transition-all duration-200 shadow-sm active:scale-95 focus:outline-none cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#D81B60] hover:bg-[#FFEAF2] text-[#D81B60] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-200 shadow-sm active:scale-95 focus:outline-none cursor-pointer"
                     >
                       <ArrowLeft className="w-3.5 h-3.5 text-[#D81B60]" />
                       <span>Previous</span>
@@ -273,9 +289,9 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
 
                   <button
                     onClick={onNext}
-                    className="inline-flex items-center gap-2 px-8 sm:px-9 py-3.5 rounded-full font-sans font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 bg-[#D81B60] hover:bg-[#B80058] text-white shadow-[0_6px_20px_rgba(216,27,96,0.3)] hover:scale-105 active:scale-95 focus:outline-none cursor-pointer"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-sans font-bold text-xs tracking-widest uppercase transition-all duration-300 bg-[#D81B60] hover:bg-[#B80058] text-white shadow-[0_6px_20px_rgba(216,27,96,0.3)] hover:scale-105 active:scale-95 focus:outline-none cursor-pointer"
                   >
-                    <span>{isLast ? "The Love Letter 💌" : 'Next Memory'}</span>
+                    <span>{isLast ? "The Love Letter 💌" : "Next Memory"}</span>
                     {isLast ? (
                       <SparkleIcon className="w-3.5 h-3.5 text-white" />
                     ) : (
@@ -336,7 +352,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                 <div className="px-2 sm:px-6">
                   <p
                     dir="auto"
-                    className="font-sans text-[#2B1525] text-lg sm:text-xl leading-loose font-medium"
+                    className="font-sans text-[#2B1525] text-base sm:text-lg leading-loose font-medium"
                   >
                     {memory.description}
                   </p>
@@ -348,7 +364,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                     <div className="p-4 sm:p-5 rounded-2xl bg-[#FFF0F5] border border-[#F8BBD0] text-center">
                       <p
                         dir="ltr"
-                        className="font-display italic text-xl sm:text-2xl text-[#D81B60] font-semibold leading-relaxed"
+                        className="font-display italic text-lg sm:text-xl text-[#D81B60] font-semibold leading-relaxed"
                       >
                         "{memory.quote}"
                       </p>
@@ -369,7 +385,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                   {canPrev && (
                     <button
                       onClick={onPrev}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#D81B60] hover:bg-[#FFEAF2] text-[#D81B60] font-sans font-bold text-xs sm:text-xs tracking-wider uppercase transition-all duration-200 shadow-sm active:scale-95 focus:outline-none cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#D81B60] hover:bg-[#FFEAF2] text-[#D81B60] font-sans font-bold text-xs tracking-wider uppercase transition-all duration-200 shadow-sm active:scale-95 focus:outline-none cursor-pointer"
                     >
                       <ArrowLeft className="w-3.5 h-3.5 text-[#D81B60]" />
                       <span>Previous</span>
@@ -378,9 +394,9 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
 
                   <button
                     onClick={onNext}
-                    className="inline-flex items-center gap-2 px-8 sm:px-9 py-3.5 rounded-full font-sans font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 bg-[#D81B60] hover:bg-[#B80058] text-white shadow-[0_6px_20px_rgba(216,27,96,0.3)] hover:scale-105 active:scale-95 focus:outline-none cursor-pointer"
+                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-sans font-bold text-xs tracking-widest uppercase transition-all duration-300 bg-[#D81B60] hover:bg-[#B80058] text-white shadow-[0_6px_20px_rgba(216,27,96,0.3)] hover:scale-105 active:scale-95 focus:outline-none cursor-pointer"
                   >
-                    <span>{isLast ? "The Love Letter 💌" : 'Next Memory'}</span>
+                    <span>{isLast ? "The Love Letter 💌" : "Next Memory"}</span>
                     {isLast ? (
                       <SparkleIcon className="w-3.5 h-3.5 text-white" />
                     ) : (
