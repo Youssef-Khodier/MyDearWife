@@ -160,7 +160,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
               </div>
 
               {/* Bottom Navigation Controls */}
-              <div className="pt-6 flex items-center justify-center gap-3 w-full">
+              <div className="pt-6 pb-4 sm:pb-0 flex items-center justify-center gap-3 w-full">
                 {canPrev && (
                   <button
                     onClick={onPrev}
@@ -276,7 +276,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                 )}
 
                 {/* Navigation Controls */}
-                <div className="pt-3 flex items-center justify-center lg:justify-start gap-3 w-full">
+                <div className="pt-4 pb-4 sm:pb-0 flex items-center justify-center lg:justify-start gap-3 w-full">
                   {canPrev && (
                     <button
                       onClick={onPrev}
@@ -381,7 +381,7 @@ export const MemoryDisplay: React.FC<MemoryDisplayProps> = ({
                 )}
 
                 {/* Navigation Controls */}
-                <div className="pt-3 flex items-center justify-center gap-3 w-full border-t border-[#F8BBD0]/60">
+                <div className="pt-4 pb-4 sm:pb-0 flex items-center justify-center gap-3 w-full border-t border-[#F8BBD0]/60">
                   {canPrev && (
                     <button
                       onClick={onPrev}

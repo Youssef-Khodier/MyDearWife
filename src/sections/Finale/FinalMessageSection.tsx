@@ -28,7 +28,7 @@ export const FinalMessageSection: React.FC<FinalMessageSectionProps> = ({
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between p-4 sm:p-8 overflow-x-hidden z-10 max-w-5xl mx-auto">
+    <div className="relative min-h-screen w-full flex flex-col justify-between p-4 pb-28 sm:p-8 overflow-x-hidden z-10 max-w-5xl mx-auto">
       {/* Top Header Badge */}
       <motion.div
         initial={{ opacity: 0, y: -15 }}

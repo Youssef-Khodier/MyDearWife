@@ -103,7 +103,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   const currentMemory = timeline[activeIndex] || timeline[0];
 
   return (
-    <div className="relative min-h-[90vh] w-full flex flex-col justify-between py-6 px-4 z-10 max-w-6xl mx-auto">
+    <div className="relative min-h-[90vh] w-full flex flex-col justify-between pt-2 pb-28 sm:py-6 px-4 z-10 max-w-6xl mx-auto">
       {/* Header */}
       <div className="text-center space-y-1 pt-2 pb-1">
         <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1A0D18] tracking-wide">
