@@ -8,6 +8,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 import { TimelineImage } from "../../types";
+import { resolveAsset } from "../../lib/assets";
 
 interface MemoryPhotoProps {
   images: TimelineImage[];
@@ -111,7 +112,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
               >
                 {/* Layer 1: Ambient soft blur fill of the image to gracefully fill any border */}
                 <img
-                  src={currentImage.src}
+                  src={resolveAsset(currentImage.src)}
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-full h-full object-cover filter blur-xl scale-125 opacity-40 select-none pointer-events-none"
@@ -121,7 +122,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImage.src}
-                    src={currentImage.src}
+                    src={resolveAsset(currentImage.src)}
                     alt={currentImage.alt}
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -202,7 +203,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                     title={img.caption || `Photo ${idx + 1}`}
                   >
                     <img
-                      src={img.src}
+                      src={resolveAsset(img.src)}
                       alt={img.alt}
                       className="w-full h-full object-cover"
                     />
@@ -238,7 +239,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                 className="relative cursor-pointer rounded-2xl overflow-hidden aspect-[3/4] bg-[#FFEAF2] border border-[#F8BBD0]/80 shadow-[0_4px_16px_rgba(216,27,96,0.1)] group"
               >
                 <img
-                  src={img.src}
+                  src={resolveAsset(img.src)}
                   alt={img.alt || `Photo ${idx + 1}`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
