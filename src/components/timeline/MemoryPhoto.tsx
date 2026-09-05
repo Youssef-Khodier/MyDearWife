@@ -90,19 +90,19 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
       {/* SINGLE POLAROID VIEW */}
       {viewMode === 'single' ? (
         <>
-          <div className="relative max-w-[380px] sm:max-w-[430px] w-full">
+          <div className="relative max-w-[440px] sm:max-w-[460px] w-full">
             {/* Cute Washi Tape Decor */}
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-28 h-5 bg-[#FF80AB]/80 backdrop-blur-sm rounded-sm -rotate-1 border-l-2 border-r-2 border-[#D81B60]/30 shadow-sm z-20" />
 
             <motion.div
               whileHover={{ y: -3, scale: 1.01 }}
               transition={{ duration: 0.25 }}
-              className="relative bg-white rounded-2xl p-3 sm:p-4 shadow-[0_12px_35px_rgba(216,27,96,0.14)] border border-[#F8BBD0]"
+              className="relative bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_12px_35px_rgba(216,27,96,0.14)] border border-[#F8BBD0]"
             >
               {/* Main Photo Area - Portrait proportioned with blurred fill so NO cropping occurs! */}
               <div
                 onClick={() => onPhotoClick(selectedImageIndex)}
-                className="relative w-full aspect-[3/4] max-h-[440px] sm:max-h-[480px] rounded-xl overflow-hidden bg-[#FFEAF2] cursor-pointer group select-none flex items-center justify-center"
+                className="relative w-full aspect-[3/4] max-h-[480px] sm:max-h-[520px] rounded-xl overflow-hidden bg-[#FFEAF2] cursor-pointer group select-none flex items-center justify-center"
               >
                 {/* Layer 1: Ambient soft blur fill of the image to gracefully fill any border */}
                 <img
@@ -189,7 +189,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
                     key={idx}
                     ref={isSelected ? activeThumbnailRef : null}
                     onClick={() => setSelectedImageIndex(idx)}
-                    className={`relative shrink-0 w-11 h-13 sm:w-12 sm:h-15 rounded-xl overflow-hidden border-2 transition-all duration-200 focus:outline-none cursor-pointer bg-[#FFEAF2] ${
+                    className={`relative shrink-0 w-12 h-15 sm:w-14 sm:h-17 rounded-xl overflow-hidden border-2 transition-all duration-200 focus:outline-none cursor-pointer bg-[#FFEAF2] ${
                       isSelected
                         ? 'border-[#D81B60] shadow-[0_4px_12px_rgba(216,27,96,0.35)] scale-105'
                         : 'border-white/90 opacity-65 hover:opacity-100 hover:scale-102'
@@ -216,7 +216,7 @@ export const MemoryPhoto: React.FC<MemoryPhotoProps> = ({
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-[440px] sm:max-w-[480px]"
+          className="w-full max-w-[460px] sm:max-w-[500px]"
         >
           <div
             className={`grid gap-2.5 sm:gap-3 py-1 ${

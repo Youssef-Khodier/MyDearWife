@@ -22,6 +22,16 @@
   --shadow-soft: 0 10px 30px -5px rgba(216, 27, 96, 0.2);
 }
 
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 18px; /* Scales up entire rem-based Tailwind UI proportionally on mobile */
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
