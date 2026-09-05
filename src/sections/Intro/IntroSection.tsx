@@ -4,6 +4,7 @@ import { ArrowRight, Heart } from 'lucide-react';
 import { birthdayData } from '../../data/timelineData';
 import { soundEngine } from '../../lib/soundEngine';
 import { SparkleIcon, StarIcon } from '../../components/ui/DecorativeShapes';
+import { resolveAsset } from '../../lib/assets';
 
 interface IntroSectionProps {
   onStart: () => void;
@@ -74,14 +75,14 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
             <div className="w-48 sm:w-56 aspect-[3/4] rounded-xl overflow-hidden bg-[#FFEAF2] relative flex items-center justify-center">
               {/* Soft blur backdrop */}
               <img
-                src="/images/2026 (now)/image (1).jpg"
+                src={resolveAsset('/images/2026 (now)/image (1).jpg')}
                 alt=""
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-35"
               />
               {/* Crisp complete uncropped photo */}
               <img
-                src="/images/2026 (now)/image (1).jpg"
+                src={resolveAsset('/images/2026 (now)/image (1).jpg')}
                 alt="Maryam Birthday Celebration"
                 className="relative z-10 w-full h-full object-contain"
                 loading="eager"

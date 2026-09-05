@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { TimelineImage } from '../../types';
+import { resolveAsset } from '../../lib/assets';
 
 interface PhotoViewerProps {
   image: TimelineImage | null;
@@ -110,7 +111,7 @@ export const PhotoViewer: React.FC<PhotoViewerProps> = ({
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-2 border-2 border-[#F48FB1]/40 max-h-[75vh] flex items-center justify-center">
               <img
-                src={image.src}
+                src={resolveAsset(image.src)}
                 alt={image.alt}
                 className="w-auto h-auto max-w-full max-h-[70vh] rounded-xl object-contain select-none"
               />
